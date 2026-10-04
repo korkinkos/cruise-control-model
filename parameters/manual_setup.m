@@ -1,4 +1,3 @@
-vehicle_parameters
-controller_parameters
-
-v_ref = 30.0;
+vehicle_parameters;
+controller_parameters;
+input_parameters;
