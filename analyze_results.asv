@@ -1,0 +1,18 @@
+v_ref = 30.0;
+
+[t, v, error] = run_simulation(v_ref);
+
+% RMSE on the final 20% of simulated time
+rmse_cruise = sqrt(mean(error(t >= 0.8*t(end)).^2));
+
+% Time to achieve 95% of reference speed
+t_95 = t(find(v >= 0.95*v_ref, 1));
+
+% Maximal overshoot above reference speed
+overshoot = max(0, max(v) - v_ref);
+overshoot_rel = overshoot / v_ref;
+
+% Time to se permanent "cruise"
+cruise_gap = 0.02;
+cruise_idx = abs(v - v_ref) > cruise_gap * v_ref;
+t_settle = t(min(cruise_idx(end)+1, end));
