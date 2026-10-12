@@ -12,4 +12,6 @@ if ~isfolder(figures_dir)
     mkdir(figures_dir);
 end
 
+addpath(fullfile(project_root, "results"));
+
 fprintf("Project initialized at:\n%s\n", project_root);
